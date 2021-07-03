@@ -8,11 +8,8 @@ namespace Pacioli.Entities.Tests
         void TwoEntries_Balance()
         {
             var transaction = new Transaction();
-            var debit = new Entry(100M);
-            var credit = new Entry(-100M);
 
-            transaction.AddEntry(debit);
-            transaction.AddEntry(credit);
+            transaction.AddEntries(new Entry(100M), new Entry(-100M));
 
             Assert.True(transaction.Balance());
         }
@@ -21,11 +18,8 @@ namespace Pacioli.Entities.Tests
         void TwoEntries_NoBalance()
         {
             var transaction = new Transaction();
-            var debit = new Entry(90M);
-            var credit = new Entry(-100M);
 
-            transaction.AddEntry(debit);
-            transaction.AddEntry(credit);
+            transaction.AddEntries(new Entry(90M), new Entry(-100M));
 
             Assert.False(transaction.Balance());
         }
@@ -34,13 +28,8 @@ namespace Pacioli.Entities.Tests
         void ThreeEntries_Balance()
         {
             var transaction = new Transaction();
-            var debit = new Entry(100M);
-            var credit1 = new Entry(-80M);
-            var credit2 = new Entry(-20M);
 
-            transaction.AddEntry(debit);
-            transaction.AddEntry(credit1);
-            transaction.AddEntry(credit2);
+            transaction.AddEntries(new Entry(100M), new Entry(-80M), new Entry(-20M));
 
             Assert.True(transaction.Balance());
         }
