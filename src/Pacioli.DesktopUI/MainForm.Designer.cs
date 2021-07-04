@@ -67,6 +67,7 @@ namespace Pacioli.DesktopUI
             this.ClientSize = new System.Drawing.Size(565, 425);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";

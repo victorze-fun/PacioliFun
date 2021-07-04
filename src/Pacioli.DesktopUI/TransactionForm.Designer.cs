@@ -30,12 +30,12 @@ namespace Pacioli.DesktopUI
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.accountTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.debitTextBox = new System.Windows.Forms.TextBox();
+            this.creditTextBox = new System.Windows.Forms.TextBox();
+            this.entriesListView = new System.Windows.Forms.ListView();
             this.accountColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.descriptionColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.debitColumnHeader = new System.Windows.Forms.ColumnHeader();
@@ -49,6 +49,8 @@ namespace Pacioli.DesktopUI
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.removeEntryButton = new System.Windows.Forms.Button();
+            this.DescriptionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -60,12 +62,12 @@ namespace Pacioli.DesktopUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Cuenta:";
             // 
-            // textBox1
+            // accountTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 0;
+            this.accountTextBox.Location = new System.Drawing.Point(87, 17);
+            this.accountTextBox.Name = "accountTextBox";
+            this.accountTextBox.Size = new System.Drawing.Size(100, 23);
+            this.accountTextBox.TabIndex = 0;
             // 
             // label2
             // 
@@ -85,37 +87,38 @@ namespace Pacioli.DesktopUI
             this.label3.TabIndex = 10;
             this.label3.Text = "Haber:";
             // 
-            // textBox2
+            // debitTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.debitTextBox.Location = new System.Drawing.Point(87, 46);
+            this.debitTextBox.Name = "debitTextBox";
+            this.debitTextBox.Size = new System.Drawing.Size(100, 23);
+            this.debitTextBox.TabIndex = 1;
+            this.debitTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox3
+            // creditTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(311, 46);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.creditTextBox.Location = new System.Drawing.Point(311, 46);
+            this.creditTextBox.Name = "creditTextBox";
+            this.creditTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.creditTextBox.Size = new System.Drawing.Size(100, 23);
+            this.creditTextBox.TabIndex = 2;
+            this.creditTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // listView1
+            // entriesListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.entriesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.accountColumnHeader,
             this.descriptionColumnHeader,
             this.debitColumnHeader,
             this.creditColumnHeader});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(13, 90);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(534, 245);
-            this.listView1.TabIndex = 11;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.entriesListView.FullRowSelect = true;
+            this.entriesListView.HideSelection = false;
+            this.entriesListView.Location = new System.Drawing.Point(13, 90);
+            this.entriesListView.Name = "entriesListView";
+            this.entriesListView.Size = new System.Drawing.Size(534, 245);
+            this.entriesListView.TabIndex = 11;
+            this.entriesListView.UseCompatibleStateImageBehavior = false;
+            this.entriesListView.View = System.Windows.Forms.View.Details;
             // 
             // accountColumnHeader
             // 
@@ -126,49 +129,51 @@ namespace Pacioli.DesktopUI
             // 
             this.descriptionColumnHeader.Name = "descriptionColumnHeader";
             this.descriptionColumnHeader.Text = "Descripción";
-            this.descriptionColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.descriptionColumnHeader.Width = 280;
             // 
             // debitColumnHeader
             // 
             this.debitColumnHeader.Name = "debitColumnHeader";
             this.debitColumnHeader.Text = "Débito";
-            this.debitColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.debitColumnHeader.Width = 100;
+            this.debitColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.debitColumnHeader.Width = 95;
             // 
             // creditColumnHeader
             // 
             this.creditColumnHeader.Name = "creditColumnHeader";
             this.creditColumnHeader.Text = "Crédito";
-            this.creditColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.creditColumnHeader.Width = 100;
+            this.creditColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.creditColumnHeader.Width = 95;
             // 
             // addEntryButton
             // 
-            this.addEntryButton.Location = new System.Drawing.Point(444, 46);
+            this.addEntryButton.Location = new System.Drawing.Point(444, 16);
             this.addEntryButton.Name = "addEntryButton";
             this.addEntryButton.Size = new System.Drawing.Size(102, 23);
             this.addEntryButton.TabIndex = 3;
             this.addEntryButton.Text = "Agregar";
             this.addEntryButton.UseVisualStyleBackColor = true;
+            this.addEntryButton.Click += new System.EventHandler(this.addEntryButton_Click);
             // 
             // recordButton
             // 
             this.recordButton.Location = new System.Drawing.Point(311, 366);
             this.recordButton.Name = "recordButton";
             this.recordButton.Size = new System.Drawing.Size(102, 23);
-            this.recordButton.TabIndex = 4;
+            this.recordButton.TabIndex = 5;
             this.recordButton.Text = "Registrar";
             this.recordButton.UseVisualStyleBackColor = true;
+            this.recordButton.Click += new System.EventHandler(this.recordButton_Click);
             // 
             // exitButton
             // 
             this.exitButton.Location = new System.Drawing.Point(444, 366);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(103, 23);
-            this.exitButton.TabIndex = 5;
+            this.exitButton.TabIndex = 6;
             this.exitButton.Text = "Salir";
             this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // label4
             // 
@@ -224,11 +229,30 @@ namespace Pacioli.DesktopUI
             this.label7.Text = "1,300.00";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // removeEntryButton
+            // 
+            this.removeEntryButton.Location = new System.Drawing.Point(444, 46);
+            this.removeEntryButton.Name = "removeEntryButton";
+            this.removeEntryButton.Size = new System.Drawing.Size(102, 23);
+            this.removeEntryButton.TabIndex = 4;
+            this.removeEntryButton.Text = "Eliminar";
+            this.removeEntryButton.UseVisualStyleBackColor = true;
+            this.removeEntryButton.Click += new System.EventHandler(this.removeEntryButton_Click);
+            // 
+            // DescriptionLabel
+            // 
+            this.DescriptionLabel.Location = new System.Drawing.Point(193, 20);
+            this.DescriptionLabel.Name = "DescriptionLabel";
+            this.DescriptionLabel.Size = new System.Drawing.Size(245, 20);
+            this.DescriptionLabel.TabIndex = 12;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 401);
+            this.ControlBox = false;
+            this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -237,17 +261,19 @@ namespace Pacioli.DesktopUI
             this.Controls.Add(this.label4);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.recordButton);
+            this.Controls.Add(this.removeEntryButton);
             this.Controls.Add(this.addEntryButton);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.entriesListView);
+            this.Controls.Add(this.creditTextBox);
+            this.Controls.Add(this.debitTextBox);
+            this.Controls.Add(this.accountTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "TransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TransactionForm";
+            this.Text = "TRANSACCIÓN";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,12 +282,12 @@ namespace Pacioli.DesktopUI
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox accountTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox debitTextBox;
+        private System.Windows.Forms.TextBox creditTextBox;
+        private System.Windows.Forms.ListView entriesListView;
         private System.Windows.Forms.Button addEntryButton;
         private System.Windows.Forms.Button recordButton;
         private System.Windows.Forms.Button exitButton;
@@ -275,5 +301,7 @@ namespace Pacioli.DesktopUI
         private System.Windows.Forms.ColumnHeader descriptionColumnHeader;
         private System.Windows.Forms.ColumnHeader debitColumnHeader;
         private System.Windows.Forms.ColumnHeader creditColumnHeader;
+        private System.Windows.Forms.Button removeEntryButton;
+        private System.Windows.Forms.Label DescriptionLabel;
     }
 }
