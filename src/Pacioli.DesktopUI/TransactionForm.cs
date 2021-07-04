@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Pacioli.Entities;
+using Pacioli.UseCases;
+using Pacioli.UseCases.Exceptions;
+using Pacioli.UseCases.Interfaces.Repositories;
+using System;
 using System.Windows.Forms;
 
 namespace Pacioli.DesktopUI
@@ -36,18 +33,48 @@ namespace Pacioli.DesktopUI
             this.Close();
         }
 
+        class TransactionRepository : ITransactionRepository
+        {
+            public void Add(Transaction transaction)
+            {
+                MessageBox.Show("La Transacción se almacenó en la base de datos.");
+            }
+        }
+
         private void recordButton_Click(object sender, EventArgs e)
         {
+            var transaction = new Transaction();
+
             if (entriesListView.Items.Count > 0)
             {
                 for (int i = 0; i < entriesListView.Items.Count; i++)
                 {
+                    Entry entry;
                     var item = entriesListView.Items[i];
-                    string line = item.SubItems[0].Text + "|" + item.SubItems[1].Text + "|" + item.SubItems[2].Text + "|" + item.SubItems[3].Text;
-                    MessageBox.Show(line);
+
+                    if (item.SubItems[2].Text != string.Empty)
+                    {
+                        entry = new Entry(decimal.Parse(item.SubItems[2].Text));
+                    }
+                    else
+                    {
+                        entry = new Entry(-decimal.Parse(item.SubItems[3].Text));
+                    }
+
+                    transaction.AddEntry(entry);
                 }
             }
-                
+
+            try
+            {
+                var recordTransaction = new RecordTransaction(new TransactionRepository());
+                recordTransaction.Save(transaction);
+                MessageBox.Show("El asiento se guardo correctamente.");
+            }
+            catch (UnbalancedTransactionException)
+            {
+                MessageBox.Show("Error. Debe haber partida doble.");
+            }
         }
 
         private void removeEntryButton_Click(object sender, EventArgs e)
@@ -55,7 +82,6 @@ namespace Pacioli.DesktopUI
             if (entriesListView.Items.Count > 0 && entriesListView.SelectedIndices.Count > 0)
             {
                 entriesListView.Items.Remove(entriesListView.SelectedItems[0]);
-                
             }
         }
     }

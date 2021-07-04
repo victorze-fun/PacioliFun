@@ -6,4 +6,9 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pacioli.Entities\Pacioli.Entities.csproj" />
+    <ProjectReference Include="..\Pacioli.UseCases\Pacioli.UseCases.csproj" />
+  </ItemGroup>
+
 </Project>
