@@ -1,10 +1,11 @@
 ﻿using Pacioli.Entities;
 using Pacioli.UseCases.Exceptions;
+using Pacioli.UseCases.Interfaces.Boundaries;
 using Pacioli.UseCases.Interfaces.Repositories;
 
 namespace Pacioli.UseCases
 {
-    public class RecordTransaction
+    public class RecordTransaction : IRecordTransaction 
     {
         ITransactionRepository _transactionRepository;
 

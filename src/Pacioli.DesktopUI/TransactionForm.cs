@@ -1,7 +1,6 @@
 ﻿using Pacioli.Entities;
-using Pacioli.UseCases;
 using Pacioli.UseCases.Exceptions;
-using Pacioli.UseCases.Interfaces.Repositories;
+using Pacioli.UseCases.Interfaces.Boundaries;
 using System;
 using System.Windows.Forms;
 
@@ -9,8 +8,11 @@ namespace Pacioli.DesktopUI
 {
     public partial class TransactionForm : Form
     {
-        public TransactionForm()
+        private IRecordTransaction _recordTransaction;
+
+        public TransactionForm(IRecordTransaction recordTransaction)
         {
+            _recordTransaction = recordTransaction;
             InitializeComponent();
         }
 
@@ -31,14 +33,6 @@ namespace Pacioli.DesktopUI
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        class TransactionRepository : ITransactionRepository
-        {
-            public void Add(Transaction transaction)
-            {
-                MessageBox.Show("La Transacción se almacenó en la base de datos.");
-            }
         }
 
         private void recordButton_Click(object sender, EventArgs e)
@@ -67,13 +61,12 @@ namespace Pacioli.DesktopUI
 
             try
             {
-                var recordTransaction = new RecordTransaction(new TransactionRepository());
-                recordTransaction.Save(transaction);
+                _recordTransaction.Save(transaction);
                 MessageBox.Show("El asiento se guardo correctamente.");
             }
             catch (UnbalancedTransactionException)
             {
-                MessageBox.Show("Error. Debe haber partida doble.");
+                MessageBox.Show($"No hay partida doble.\nDebe: {transaction.Debit}     Haber: {transaction.Credit}");
             }
         }
 

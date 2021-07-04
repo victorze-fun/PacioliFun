@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacioli.UseCases.Tests", "t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacioli.DesktopUI", "src\Pacioli.DesktopUI\Pacioli.DesktopUI.csproj", "{7CC9293E-8044-4B75-B49A-E1D0B2693C1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacioli.Services", "src\Pacioli.Services\Pacioli.Services.csproj", "{AC2383AF-7552-4339-9D56-665806FF85B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{7CC9293E-8044-4B75-B49A-E1D0B2693C1E}.Release|x64.Build.0 = Release|Any CPU
 		{7CC9293E-8044-4B75-B49A-E1D0B2693C1E}.Release|x86.ActiveCfg = Release|Any CPU
 		{7CC9293E-8044-4B75-B49A-E1D0B2693C1E}.Release|x86.Build.0 = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Debug|x86.Build.0 = Debug|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|x64.Build.0 = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC2383AF-7552-4339-9D56-665806FF85B5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +111,7 @@ Global
 		{C8A01FFC-A426-4242-A7FE-97E2A6E8E872} = {6BF9AED8-F3BA-4A7F-BB06-CE658934618F}
 		{7456DD05-6402-4567-A07A-6223BA3F27C3} = {CAE9030E-BBD7-4866-AABF-B761BB67FBC4}
 		{7CC9293E-8044-4B75-B49A-E1D0B2693C1E} = {6BF9AED8-F3BA-4A7F-BB06-CE658934618F}
+		{AC2383AF-7552-4339-9D56-665806FF85B5} = {6BF9AED8-F3BA-4A7F-BB06-CE658934618F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BECB3866-69D6-4630-B3EA-5717340E486A}

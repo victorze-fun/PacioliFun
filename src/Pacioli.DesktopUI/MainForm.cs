@@ -12,7 +12,7 @@ namespace Pacioli.DesktopUI
 
         private void accounting_NewTransactionStripMenuItem_Click(object sender, EventArgs e)
         {
-            var transactionForm = new TransactionForm();
+            var transactionForm = IoC.GetService<TransactionForm>();
             transactionForm.ShowDialog();
         }
     }

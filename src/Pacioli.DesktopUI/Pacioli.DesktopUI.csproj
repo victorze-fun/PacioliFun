@@ -8,7 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pacioli.Entities\Pacioli.Entities.csproj" />
+    <ProjectReference Include="..\Pacioli.Services\Pacioli.Services.csproj" />
     <ProjectReference Include="..\Pacioli.UseCases\Pacioli.UseCases.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
