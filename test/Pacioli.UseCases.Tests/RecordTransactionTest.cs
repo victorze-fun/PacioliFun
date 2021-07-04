@@ -18,11 +18,11 @@ namespace Pacioli.UseCases.Tests
 
             recordTransaction.Save(transaction);
 
-            mock.Verify( x => x.Add(transaction), Times.Once);
+            mock.Verify(x => x.Add(transaction), Times.Once);
         }
 
         [Fact]
-        void UnbalancedTransaction_UnbalancedTransactionException()
+        void UnbalancedTransaction_ThrowUnbalancedTransactionException()
         {
             var transaction = new Transaction();
             transaction.AddEntries(new Entry(100M), new Entry(-90M));
@@ -32,7 +32,7 @@ namespace Pacioli.UseCases.Tests
             var ex = Assert.Throws<UnbalancedTransactionException>(
                 () => recordTransaction.Save(transaction));
             Assert.Equal("Unbalanced: debit 100.00 and credit 90.00", ex.Message);
-            mock.Verify( x => x.Add(transaction), Times.Never);
+            mock.Verify(x => x.Add(transaction), Times.Never);
         }
     }
 }

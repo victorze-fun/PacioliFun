@@ -5,7 +5,7 @@ namespace Pacioli.Entities
 {
     public class Transaction
     {
-        public IList<Entry> _entries = new List<Entry>();
+        private IList<Entry> _entries = new List<Entry>();
 
         public bool Balance()
         {
@@ -31,15 +31,14 @@ namespace Pacioli.Entities
             }
         }
         
-
         public void AddEntry(Entry entry)
         {
             _entries.Add(entry);
         }
 
-        public void AddEntries(params Entry[] entrys)
+        public void AddEntries(params Entry[] entries)
         {
-            foreach (var entry in entrys)
+            foreach (var entry in entries)
             {
                 _entries.Add(entry);
             }
