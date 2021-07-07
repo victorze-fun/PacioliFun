@@ -4,7 +4,7 @@ using Pacioli.UseCases.Interfaces.Boundaries;
 using System;
 using System.Windows.Forms;
 
-namespace Pacioli.DesktopUI
+namespace Pacioli.DesktopUI.Views
 {
     public partial class TransactionForm : Form
     {

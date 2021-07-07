@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Pacioli.DesktopUI
+namespace Pacioli.DesktopUI.Views
 {
     public partial class MainForm : Form
     {

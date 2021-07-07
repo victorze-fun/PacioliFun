@@ -1,5 +1,5 @@
 ﻿
-namespace Pacioli.DesktopUI
+namespace Pacioli.DesktopUI.Views
 {
     partial class TransactionForm
     {
