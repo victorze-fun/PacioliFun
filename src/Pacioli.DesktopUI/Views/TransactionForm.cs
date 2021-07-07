@@ -8,7 +8,7 @@ namespace Pacioli.DesktopUI.Views
 {
     public partial class TransactionForm : Form
     {
-        private IRecordTransaction _recordTransaction;
+        private readonly IRecordTransaction _recordTransaction;
 
         public TransactionForm(IRecordTransaction recordTransaction)
         {
@@ -55,14 +55,14 @@ namespace Pacioli.DesktopUI.Views
                         entry = new Entry(-decimal.Parse(item.SubItems[3].Text));
                     }
 
-                    transaction.AddEntry(entry);
+                    transaction.Entries.Add(entry);
                 }
             }
 
             try
             {
                 _recordTransaction.Save(transaction);
-                MessageBox.Show("El asiento se guardo correctamente.");
+                MessageBox.Show("El asiento se guardó correctamente.");
             }
             catch (UnbalancedTransactionException)
             {

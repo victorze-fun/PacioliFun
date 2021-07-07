@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pacioli.DesktopUI.Views;
 using Pacioli.Services.Repositories;
 using Pacioli.UseCases;
 using Pacioli.UseCases.Interfaces.Boundaries;

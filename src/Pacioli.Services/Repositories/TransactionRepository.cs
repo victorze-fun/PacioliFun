@@ -1,6 +1,5 @@
 ﻿using Pacioli.Entities;
 using Pacioli.UseCases.Interfaces.Repositories;
-using System;
 
 namespace Pacioli.Services.Repositories
 {
@@ -8,7 +7,12 @@ namespace Pacioli.Services.Repositories
     {
         public void Add(Transaction transaction)
         {
-            Console.WriteLine("La Transacción se almacenó en la base de datos.");
+            using (var db = new ApplicationDbContext())
+            {
+                db.Database.EnsureCreated();
+                db.Transactions.Add(transaction);
+                db.SaveChanges();
+            }
         }
-    }
+   }
 }

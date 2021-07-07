@@ -5,6 +5,9 @@ namespace Pacioli.Entities
 {
     public class Transaction
     {
+        public int Id { get; set; }
+        public IList<Entry> Entries { get; set; } = new List<Entry>();
+
         private IList<Entry> _entries = new List<Entry>();
 
         public bool Balance()
