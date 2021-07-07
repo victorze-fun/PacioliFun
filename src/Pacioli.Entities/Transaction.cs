@@ -8,11 +8,9 @@ namespace Pacioli.Entities
         public int Id { get; set; }
         public IList<Entry> Entries { get; set; } = new List<Entry>();
 
-        private IList<Entry> _entries = new List<Entry>();
-
         public bool Balance()
         {
-            var amounts = from e in _entries select e.Amount;
+            var amounts = from e in Entries select e.Amount;
             return amounts.Sum() == 0;
         }
 
@@ -20,7 +18,7 @@ namespace Pacioli.Entities
         {
             get
             {
-                var amounts = from e in _entries where e.Amount > 0 select e.Amount;
+                var amounts = from e in Entries where e.Amount > 0 select e.Amount;
                 return amounts.Sum();
             }
         }
@@ -29,21 +27,16 @@ namespace Pacioli.Entities
         {
             get
             {
-                var amounts = from e in _entries where e.Amount < 0 select e.Amount;
+                var amounts = from e in Entries where e.Amount < 0 select e.Amount;
                 return -amounts.Sum();
             }
         }
         
-        public void AddEntry(Entry entry)
-        {
-            _entries.Add(entry);
-        }
-
         public void AddEntries(params Entry[] entries)
         {
             foreach (var entry in entries)
             {
-                _entries.Add(entry);
+                Entries.Add(entry);
             }
         }
     }

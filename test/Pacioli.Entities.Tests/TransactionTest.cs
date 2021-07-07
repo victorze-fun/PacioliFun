@@ -9,7 +9,8 @@ namespace Pacioli.Entities.Tests
         {
             var transaction = new Transaction();
 
-            transaction.AddEntries(new Entry(100M), new Entry(-100M));
+            transaction.Entries.Add(new Entry(100M));
+            transaction.Entries.Add(new Entry(-100M));
 
             Assert.True(transaction.Balance());
         }
@@ -19,7 +20,8 @@ namespace Pacioli.Entities.Tests
         {
             var transaction = new Transaction();
 
-            transaction.AddEntries(new Entry(90M), new Entry(-100M));
+            transaction.Entries.Add(new Entry(90M));
+            transaction.Entries.Add(new Entry(-100M));
 
             Assert.False(transaction.Balance());
         }
@@ -29,7 +31,9 @@ namespace Pacioli.Entities.Tests
         {
             var transaction = new Transaction();
 
-            transaction.AddEntries(new Entry(100M), new Entry(-80M), new Entry(-20M));
+            transaction.Entries.Add(new Entry(100M));
+            transaction.Entries.Add(new Entry(-20M));
+            transaction.Entries.Add(new Entry(-80M));
 
             Assert.True(transaction.Balance());
         }

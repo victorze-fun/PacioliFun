@@ -7,12 +7,9 @@ namespace Pacioli.Services.Repositories
     {
         public void Add(Transaction transaction)
         {
-            using (var db = new ApplicationDbContext())
-            {
-                db.Database.EnsureCreated();
-                db.Transactions.Add(transaction);
-                db.SaveChanges();
-            }
+            using var db = new ApplicationDbContext();
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
         }
    }
 }

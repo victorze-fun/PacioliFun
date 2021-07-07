@@ -12,7 +12,8 @@ namespace Pacioli.UseCases.Tests
         void SaveTransaction()
         {
             var transaction = new Transaction();
-            transaction.AddEntries(new Entry(100M), new Entry(-100M));
+            transaction.Entries.Add(new Entry(100M));
+            transaction.Entries.Add(new Entry(-100M));
             var mock = new Mock<ITransactionRepository>();
             var recordTransaction = new RecordTransaction(mock.Object);
 
@@ -25,7 +26,8 @@ namespace Pacioli.UseCases.Tests
         void UnbalancedTransaction_ThrowUnbalancedTransactionException()
         {
             var transaction = new Transaction();
-            transaction.AddEntries(new Entry(100M), new Entry(-90M));
+            transaction.Entries.Add(new Entry(100M));
+            transaction.Entries.Add(new Entry(-90M));
             var mock = new Mock<ITransactionRepository>();
             var recordTransaction = new RecordTransaction(mock.Object);
 

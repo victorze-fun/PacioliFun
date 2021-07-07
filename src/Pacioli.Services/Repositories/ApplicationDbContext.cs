@@ -18,20 +18,15 @@ namespace Pacioli.Services.Repositories
         {
             Database.EnsureCreated();
         }
+
         public ApplicationDbContext()
         {
-
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=data.db;");
         }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Entity<Entry>().ToTable("Entries");
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }
